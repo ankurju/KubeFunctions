@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+</head>
+<body>
+    <h1>Result Page</h1>
+    <hr/>
+    {% if result %}
+    <h3>RESULT ID: {{result.id}}</h3>
+    <h3>RESULT TASK_ID: {{result.task_id}}</h3>
+    <h3>RESULT STATE: {{result.state}}</h3>
+    <h3>RESULT STATUS: {{result.status}}</h3>
+    <h3>FINAL RESULT: {{result.result}}</h3>
+    {% endif %}
+</body>
+</html>

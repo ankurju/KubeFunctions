@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaaS Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Register or Trigger Function</h1>
+        
+        {% if error_message %}
+        <div class="error-message">{{ error_message }}</div>
+        {% endif %}
+
+        {% if success_message %}
+        <div class="success-message">{{ success_message }}</div>
+        {% endif %}
+
+        <form method="post" action="{% url 'register_function' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="function_name">Function Name:</label>
+            <input type="text" id="function_name" name="function_name">
+            <label for="function_file">Function File (.py):</label>
+            <input type="file" id="function_file" name="file">
+            <label for="trigger_name">Trigger Name:</label>
+            <input type="text" id="trigger_name" name="trigger_name">
+            <button type="submit" name="action" value="register">Register</button>
+        </form>
+
+        <form method="post" action="{% url 'trigger_dispatch' %}">
+            {% csrf_token %}
+            <label for="trigger_name">Function Name:</label>
+            <input type="text" id="trigger_name" name="trigger_name">
+            <button type="submit" name="action" value="trigger">Trigger</button>
+        </form>
+        <hr/>
+        <form method="post" action="{% url 'loadtest' %}">
+            {% csrf_token %}
+            <button type="submit" name="action" value="loadtest">Loadtest</button>
+        </form>
+        {% if result.id %}
+        <p>TASK ID: {{result.id}}</p>
+        <a href="{% url 'check_result' result.id %}">Check Result</a>
+        {% endif %}
+    </div>
+</body>
+</html>

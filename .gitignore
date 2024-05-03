@@ -1,0 +1,9 @@
+db.sqlite3
+*.pyc
+.idea/*
+__pycache__/*
+0*.py
+media/*
+env/
+logs/*
+*.env

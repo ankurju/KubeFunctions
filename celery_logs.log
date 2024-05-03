@@ -1,0 +1,46 @@
+[2024-05-03 13:19:27,857: WARNING/MainProcess] /home/ankur/.local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-05-03 13:19:27,865: INFO/MainProcess] Connected to redis://127.0.0.1:6379/0
+[2024-05-03 13:19:27,866: WARNING/MainProcess] /home/ankur/.local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-05-03 13:19:27,869: INFO/MainProcess] mingle: searching for neighbors
+[2024-05-03 13:19:28,883: INFO/MainProcess] mingle: all alone
+[2024-05-03 13:19:28,915: INFO/MainProcess] celery@ankur-Lenovo-IdeaPad-S145-15IWL ready.
+[2024-05-03 13:20:17,974: INFO/MainProcess] Task apis.tasks.execute_function[7e486102-c183-4b5a-838f-a536340763d6] received
+[2024-05-03 13:20:32,666: INFO/ForkPoolWorker-7] Task apis.tasks.execute_function[7e486102-c183-4b5a-838f-a536340763d6] succeeded in 14.691435283006285s: '499500'
+[2024-05-03 13:47:38,440: INFO/MainProcess] Task apis.tasks.execute_function[289125e1-9af6-425f-8b01-d9af6300c21a] received
+[2024-05-03 13:47:38,445: INFO/MainProcess] Task apis.tasks.execute_function[1a366100-884a-493e-90dc-3f39c9baa289] received
+[2024-05-03 13:47:38,450: INFO/MainProcess] Task apis.tasks.execute_function[4d0ff8bf-b4d1-4b97-8fbd-8d995f2efd49] received
+[2024-05-03 13:47:38,457: INFO/MainProcess] Task apis.tasks.execute_function[1dcb9e41-7de0-45a0-a46b-bea0f8d457f2] received
+[2024-05-03 13:47:38,467: INFO/MainProcess] Task apis.tasks.execute_function[6fe45861-78a0-4e1b-8538-b0477f58a556] received
+[2024-05-03 13:47:38,469: INFO/MainProcess] Task apis.tasks.execute_function[26f5e63b-3ea9-45c2-81c2-cf04ea95aa8b] received
+[2024-05-03 13:47:38,472: INFO/MainProcess] Task apis.tasks.execute_function[71fe29f5-31ab-462b-8d84-b0594c90e688] received
+[2024-05-03 13:47:38,477: INFO/MainProcess] Task apis.tasks.execute_function[a5e69514-5739-4be7-973a-9fc66e667909] received
+[2024-05-03 13:47:38,488: INFO/MainProcess] Task apis.tasks.execute_function[a96e8531-2f9d-4c62-a220-8f57284d112a] received
+[2024-05-03 13:47:38,511: INFO/MainProcess] Task apis.tasks.execute_function[1a59542f-416c-4fb0-b995-0557dbdc3954] received
+[2024-05-03 13:47:38,514: INFO/MainProcess] Task apis.tasks.execute_function[fc9b8c5a-c477-4a45-885e-7b51e96a524b] received
+[2024-05-03 13:47:38,517: INFO/MainProcess] Task apis.tasks.execute_function[636900c9-2525-42b6-b4c1-fafca0d1b086] received
+[2024-05-03 13:47:50,461: INFO/ForkPoolWorker-5] Task apis.tasks.execute_function[71fe29f5-31ab-462b-8d84-b0594c90e688] succeeded in 11.983143559002201s: '499500'
+[2024-05-03 13:47:53,697: INFO/ForkPoolWorker-7] Task apis.tasks.execute_function[289125e1-9af6-425f-8b01-d9af6300c21a] succeeded in 15.249932802005787s: '499500'
+[2024-05-03 13:47:57,927: INFO/ForkPoolWorker-2] Task apis.tasks.execute_function[1dcb9e41-7de0-45a0-a46b-bea0f8d457f2] succeeded in 19.467692905003787s: '499500'
+[2024-05-03 13:47:59,325: INFO/ForkPoolWorker-6] Task apis.tasks.execute_function[a5e69514-5739-4be7-973a-9fc66e667909] succeeded in 20.846931766005582s: '499500'
+[2024-05-03 13:48:02,681: INFO/ForkPoolWorker-4] Task apis.tasks.execute_function[26f5e63b-3ea9-45c2-81c2-cf04ea95aa8b] succeeded in 24.20983601199987s: '499500'
+[2024-05-03 13:48:06,453: INFO/ForkPoolWorker-3] Task apis.tasks.execute_function[6fe45861-78a0-4e1b-8538-b0477f58a556] succeeded in 27.98227796300489s: '499500'
+[2024-05-03 13:48:07,833: INFO/MainProcess] Task apis.tasks.execute_function[7833f756-c31d-431a-9b6a-54688ca53ce1] received
+[2024-05-03 13:48:13,188: INFO/ForkPoolWorker-5] Task apis.tasks.execute_function[a96e8531-2f9d-4c62-a220-8f57284d112a] succeeded in 22.726192441987223s: '499500'
+[2024-05-03 13:48:14,447: INFO/ForkPoolWorker-7] Task apis.tasks.execute_function[1a59542f-416c-4fb0-b995-0557dbdc3954] succeeded in 20.74929555100971s: '499500'
+[2024-05-03 13:48:18,148: INFO/ForkPoolWorker-2] Task apis.tasks.execute_function[fc9b8c5a-c477-4a45-885e-7b51e96a524b] succeeded in 20.21944458100188s: '499500'
+[2024-05-03 13:48:19,718: INFO/ForkPoolWorker-6] Task apis.tasks.execute_function[636900c9-2525-42b6-b4c1-fafca0d1b086] succeeded in 20.389075339000556s: '499500'
+[2024-05-03 13:48:22,654: INFO/ForkPoolWorker-3] Task apis.tasks.execute_function[7833f756-c31d-431a-9b6a-54688ca53ce1] succeeded in 14.819836194001255s: '499500'
+[2024-05-03 14:00:55,984: INFO/MainProcess] Task apis.tasks.execute_function[636696dc-590a-4b68-89d6-7a3ba097be49] received
+[2024-05-03 14:00:58,600: INFO/MainProcess] Task apis.tasks.execute_function[dec5dac1-ce7d-4436-a6c1-4d498be23193] received
+[2024-05-03 14:01:04,506: INFO/ForkPoolWorker-7] Task apis.tasks.execute_function[636696dc-590a-4b68-89d6-7a3ba097be49] succeeded in 8.521359728998505s: '499500'
+[2024-05-03 14:01:07,172: INFO/ForkPoolWorker-2] Task apis.tasks.execute_function[dec5dac1-ce7d-4436-a6c1-4d498be23193] succeeded in 8.570904256004724s: '499500'
