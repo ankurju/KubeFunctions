@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KubeFunction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto; /* Center the container and add space between navbar and container */
+            padding: 20px 20px 100px; /* Increase padding to add more length vertically */
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold; /* Make the heading bold */
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .error-message {
+            color: #f00;
+            margin-top: 5px; /* Add space above error message */
+            font-weight: bold; /* Make error message bold */
+            margin-left: auto;
+        }
+        .success-message {
+            color: green;
+            margin-top: 5px; /* Add space above error message */
+            font-weight: bold; /* Make error message bold */
+            margin-left: auto;
+        }
+        input[type="text"],
+        input[type="file"],
+        textarea {
+            width: calc(100% - 16px); /* Adjust width for better alignment */
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #f0a500;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold; /* Make input fields and buttons bold */
+        }
+        button:hover {
+            background-color: #f0a500;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        /* Navbar styles */
+        nav {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+        }
+        nav h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        nav li {
+            float: left;
+        }
+        nav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-weight: bold; /* Make navbar links bold */
+        }
+        nav li a:hover {
+            background-color: #0056b3;
+        }
+        /* Table styles */
+        table {
+            width: 40%; /* Adjust the width as needed */
+            border-collapse: collapse;
+            margin-bottom: 20px; /* Add space between the table and the form */
+            margin-left: auto; /* Center the table horizontally */
+            margin-right: auto;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0; /* Header background color */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Kube<span style="color: #f0a500;">Function</span></h1>
+        <ul>
+            <li><a href="{% url 'register_function' %}">Register Function</a></li>
+            <li><a href="{% url 'trigger_dispatch' %}">Trigger Function</a></li>
+            <li><a href="{% url 'loadtest' %}">Load Test</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Trigger Function</h1>
+
+        <form method="post" action="{% url 'trigger_dispatch' %}">
+            {% csrf_token %}
+            <label for="trigger_name">Trigger Name:</label>
+            <input type="text" id="trigger_name" name="trigger_name">
+            {% if error_message %}
+                <div class="error-message">{{ error_message }}</div>
+            {% endif %}
+            <button type="submit" name="action" value="trigger">Trigger</button>
+        </form>
+        <!-- <form method="post" action="{% url 'loadtest' %}">
+            {% csrf_token %}
+            <button type="submit" name="action" value="loadtest">Loadtest</button>
+        </form> -->
+        {% if success_message %}
+            <div class="success-message">{{ success_message }}</div>
+        {% endif %}
+
+        {% if result.id %}
+        <form method="get" action="{% url 'check_result' result.id %}">
+            <button type="submit">Check Result</button>
+        </form>
+        {% endif %}
+
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Function Name</th>
+                <th>Trigger Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through all entries from the Function model -->
+            {% if all_functions %}
+                {% for function in all_functions %}
+                    <tr>
+                        <td>{{ function.function_name }}</td>
+                        <td>{{ function.trigger_name }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <p>No functions registered</p>
+            {% endif %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Result</title>
+    <title>KubeFunction</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,8 +13,8 @@
         }
         .container {
             max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 20px auto; /* Center the container and add space between navbar and container */
+            padding: 20px 20px 100px; /* Increase padding to add more length vertically */
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -22,15 +22,27 @@
         h1 {
             text-align: center;
             margin-bottom: 20px;
+            font-weight: bold; /* Make the heading bold */
         }
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
         }
+        .error-message {
+            color: #f00;
+            margin-top: 5px; /* Add space above error message */
+            font-weight: bold; /* Make error message bold */
+        }
+        .success-message {
+            color: green;
+            margin-top: 5px; /* Add space above error message */
+            font-weight: bold; /* Make error message bold */    
+        }
         input[type="text"],
+        input[type="file"],
         textarea {
-            width: 100%;
+            width: calc(100% - 16px); /* Adjust width for better alignment */
             padding: 8px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
@@ -41,15 +53,16 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #4caf50;
+            background-color: #f0a500;
             color: #fff;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s;
+            font-weight: bold; /* Make input fields and buttons bold */
         }
         button:hover {
-            background-color: #45a049;
+            background-color: #f0a500;
         }
         .response {
             margin-top: 20px;
@@ -84,42 +97,9 @@
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
+            font-weight: bold; /* Make navbar links bold */
         }
         nav li a:hover {
-            background-color: #0056b3;
-        }
-        .center {
-            margin: 0 auto; /* Center the container */
-            max-width: 600px; /* Limit the maximum width */
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 8px;
-            border: 1px solid #ccc;
-            text-align: left;
-        }
-        th {
-            background-color: #f0f0f0;
-            font-weight: bold;
-        }
-        .refresh-button {
-            display: block;
-            margin-top: 20px;
-            padding: 10px;
-            width: 100%;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-        }
-        .refresh-button:hover {
             background-color: #0056b3;
         }
     </style>
@@ -130,44 +110,16 @@
         <ul>
             <li><a href="{% url 'register_function' %}">Register Function</a></li>
             <li><a href="{% url 'trigger_dispatch' %}">Trigger Function</a></li>
-            <li><a href="#loadtest">Load Test</a></li>
+            <li><a href="{% url 'loadtest' %}">Load Test</a></li>
         </ul>
     </nav>
-    <div class="center">
-    <h1>Result Page</h1>
-    <hr/>
-    {% if result %}
-    <table>
-        <tr>
-            <th>Field</th>
-            <th>Value</th>
-        </tr>
-        <tr>
-            <td>RESULT ID</td>
-            <td>{{ result.id }}</td>
-        </tr>
-        <tr>
-            <td>RESULT STATE</td>
-            <td>{{ result.state }}</td>
-        </tr>
-        <tr>
-            <td>RESULT STATUS</td>
-            <td>{{ result.status }}</td>
-        </tr>
-        <tr>
-            <td>FINAL RESULT</td>
-            <td>{{ result.result|slice:":4" }}
-            </td>
-        </tr>
-    </table>
-    {% endif %}
-    <button class="refresh-button" onclick="refreshPage()">Refresh Page</button>
-</div>
-    <script>
-        function refreshPage() {
-            location.reload();
-        }
-    </script>
+    <div class="container">
+        <h1>Loadtest</h1>
 
+        <form method="post" action="{% url 'loadtest' %}">
+            {% csrf_token %}
+            <button>Click here to start loadtest</button>
+        </form>
+    </div>
 </body>
 </html>

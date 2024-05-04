@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FaaS Platform</title>
+    <title>KubeFunction</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -57,9 +57,48 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+        /* Navbar styles */
+        nav {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+        }
+        nav h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        nav li {
+            float: left;
+        }
+        nav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        nav li a:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
+    <nav>
+        <h1>Kube<span style="color: #f0a500;">Function</span></h1>
+        <ul>
+            <li><a href="{% url 'register_function' %}">Register Function</a></li>
+            <li><a href="#trigger">Trigger Function</a></li>
+            <li><a href="#loadtest">Load Test</a></li>
+        </ul>
+    </nav>
     <div class="container">
         <h1>Register or Trigger Function</h1>
         

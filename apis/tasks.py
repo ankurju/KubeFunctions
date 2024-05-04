@@ -37,7 +37,7 @@ def execute_function(function_name,job_name):
         }
 
         # Execute command within container
-        
+        start_time = time.time()
         batch_api.create_namespaced_job(body=job_manifest, namespace="default")
         while True:
             pod_list = core_api.list_namespaced_pod(namespace="default", label_selector=f"job-name=function-executor-job-{job_name}")
@@ -47,7 +47,10 @@ def execute_function(function_name,job_name):
                 # Check if the Pod has completed
                 if pod.status.phase == "Succeeded":
                     # Retrieve function output from the Pod
-                    response = core_api.read_namespaced_pod_log(name=pod.metadata.name, namespace="default")
+                    result = core_api.read_namespaced_pod_log(name=pod.metadata.name, namespace="default")
+                    end_time = time.time()
+                    time_diff = end_time-start_time
+                    response = f"{result}-{time_diff}"
                     return response
                 # Wait for 1 second before checking again
                 time.sleep(1)
